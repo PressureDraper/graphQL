@@ -1,1 +1,4 @@
-GraphQL learning project
+REQUIREMENTS:
+
+- nest install
+> npm install -g @nestjs/cli
