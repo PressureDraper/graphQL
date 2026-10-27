@@ -13,7 +13,7 @@ export class TodoService {
 
     create(createTodoDto: CreateTodoDto) {
         const todo = new Todo();
-        todo.id = Math.max( ...this.todos.map(todo => todo.id), 0) + 1;
+        todo.id = Math.max(...this.todos.map(todo => todo.id), 0) + 1;
         todo.description = createTodoDto.description;
         this.todos.push(todo);
 
@@ -33,7 +33,7 @@ export class TodoService {
     }
 
     update(id: number, updateTodoDto: UpdateTodoDto): Todo {
-        const  { done, description } = updateTodoDto;
+        const { done, description } = updateTodoDto;
         const todo: Todo = this.findOne(id);
 
         if (done !== undefined) todo.done = done;
@@ -46,6 +46,11 @@ export class TodoService {
     }
 
     remove(id: number) {
-        return `This action removes a #${id} todo`;
+        this.findOne(id);
+
+        const index = this.todos.findIndex(todo => todo.id === id);
+        this.todos.splice(index, 1);
+
+        return this.todos;
     }
 }
