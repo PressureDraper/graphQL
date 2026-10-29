@@ -3,5 +3,10 @@
 # ------------------------------------------------------
 
 type Query {
-  helloWorld: String!
+  """Message for describing the purpose of this function"""
+  getRename: String!
+  randomNumber: Float!
+
+  """get a random number from 0 to 10"""
+  randomFromZero: Int!
 }
